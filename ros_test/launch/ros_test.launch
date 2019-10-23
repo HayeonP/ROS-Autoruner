@@ -1,0 +1,4 @@
+<launch>
+       <node pkg="ros_test" type="test_node1" name="test_node1" output="screen"/> 
+       <node pkg="ros_test" type="test_node2" name="test_node2" /> 
+</launch>

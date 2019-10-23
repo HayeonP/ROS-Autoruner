@@ -1,0 +1,11 @@
+total_step_num: 2
+terminate_script_path: "/home/hypark/minicar_ws/src/simple_autoruner/script/terminate.sh"
+# step_# : 
+#     [0] pacakge name
+#     [1] target name( node name or launch script name )
+#     [2] state that create constraint topic or not ( "true" or "false" )
+#     [3] state that check constraint topic or not ( "true" or "false" )
+#     [4] target type( RUN or LAUNCH )
+
+step_1: ["teleop_twist_keyboard", "teleop_twist_keyboard.py", "true", "false", "RUN"]
+step_2: ["ros_test", "ros_test.launch", "false", "true", "LAUNCH"]
