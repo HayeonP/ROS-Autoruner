@@ -1,6 +1,6 @@
 
 #include <ros/ros.h>
-#include <ros_autoruner/ros_autoruner.h>
+#include <ros_autorunner/ros_autorunner.h>
 
 // Include subscribe message type
 #include <geometry_msgs/Twist.h>
@@ -8,10 +8,10 @@
 
 #define TOTAL_STEP_NUM 2 // Need to change when total step number is changed
 
-class SimpleAutoruner : public AutorunerBase{
+class SimpleAutorunner : public AutorunnerBase{
 private:    
     ros::NodeHandle     nh_;
-    ROSAutoruner        ros_autoruner_;
+    ROSAutorunner        ros_autorunner_;
 private:
     virtual void register_subscribers();
 private:
@@ -21,7 +21,7 @@ private:
 public:
     Sub_v               sub_v_;
 public:
-    SimpleAutoruner() {}
-    SimpleAutoruner(ros::NodeHandle nh) : nh_(nh){}
+    SimpleAutorunner() {}
+    SimpleAutorunner(ros::NodeHandle nh) : nh_(nh){}
     virtual void Run();
 };

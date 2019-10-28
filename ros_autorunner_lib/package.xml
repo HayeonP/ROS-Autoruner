@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>ros_autoruner_lib</name>
+  <name>ros_autorunner_lib</name>
   <version>0.0.0</version>
-  <description>The ros_autoruner package</description>
+  <description>The ros_autorunner package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

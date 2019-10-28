@@ -1,5 +1,5 @@
 total_step_num: 2
-terminate_script_path: "/home/hypark/minicar_ws/src/simple_autoruner/script/terminate.sh"
+terminate_script_path: "/home/hypark/minicar_ws/src/simple_autorunner/script/terminate.sh"
 # step_# : 
 #     [0] pacakge name
 #     [1] target name( node name or launch script name )

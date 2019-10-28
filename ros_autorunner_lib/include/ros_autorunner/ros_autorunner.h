@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <stdlib.h>
 #include <sys/wait.h>
-#include <ros_autoruner/ros_autoruner_def.h>
+#include <ros_autorunner/ros_autorunner_def.h>
 #include <signal.h>
 
 class StepInfo{
@@ -21,7 +21,7 @@ typedef std::vector<ros::Subscriber>::iterator       Sub_it;
 typedef std::vector<StepInfo>                        StepInfo_v;
 typedef std::vector<StepInfo>::iterator              StepInfo_it;
 
-class ROSAutoruner{
+class ROSAutorunner{
 private:
     ros::NodeHandle     nh_;
     int                 total_step_num_; // Read from cfg  
@@ -35,22 +35,22 @@ private:
 public:
     StepInfo_v          step_info_list_;
 public:
-    ROSAutoruner(){}
+    ROSAutorunner(){}
     void init(ros::NodeHandle nh, Sub_v sub_v);
     void Run();         // Execute each steps
 };
 
-class AutorunerBase{
+class AutorunnerBase{
 protected:    
     ros::NodeHandle     nh_;
-    ROSAutoruner        ros_autoruner_;
+    ROSAutorunner        ros_autorunner_;
 protected:
     virtual void register_subscribers() = 0;
 public:
     Sub_v               sub_v_;
 public:
-    AutorunerBase(){ std::cout<<"\tBase default constructor"<<std::endl; }
-    AutorunerBase(ros::NodeHandle nh){ std::cout<<"\tBase nodehandle constructor"<<std::endl; }
+    AutorunnerBase(){ std::cout<<"\tBase default constructor"<<std::endl; }
+    AutorunnerBase(ros::NodeHandle nh){ std::cout<<"\tBase nodehandle constructor"<<std::endl; }
 };
 
 static std::string                 terminate_script_path_;       

@@ -1,10 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(simple_autoruner)
-
-set(ROS_AUTORUNER_LIB "/home/hypark/minicar_ws/src/ros_autoruner_lib") # Add library line
+project(ros_autorunner_lib)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11) # Add c++11 compile option
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -104,7 +102,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES minicar_autoruner
+#  LIBRARIES ros_autoruner
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
@@ -117,13 +115,13 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
   include ${catkin_INCLUDE_DIRS}
-  ${ROS_AUTORUNER_LIB}/include # Add library include directory
+# include
+# ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
-# add_library( ros_autoruner_lib
-#   include/ros_autoruner/ros_autoruner.h
-#   src/ros_autoruner.cpp
+# add_library(${PROJECT_NAME}
+#   src/${PROJECT_NAME}/ros_autoruner.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -134,7 +132,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/simple_autoruner_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/ros_autoruner_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -198,7 +196,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_minicar_autoruner.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_ros_autoruner.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
@@ -207,13 +205,12 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
-add_executable(simple_autoruner
-  include/simple_autoruner/simple_autoruner.h
-  src/simple_autoruner_node.cpp
-  src/simple_autoruner.cpp
+add_library(ros_autorunner_lib
+  include/ros_autorunner/ros_autorunner_def.h
+  include/ros_autorunner/ros_autorunner.h
+  src/ros_autorunner.cpp
 )
-add_dependencies(simple_autoruner ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(simple_autoruner
+add_dependencies(ros_autorunner_lib ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(ros_autorunner_lib
   ${catkin_LIBRARIES}
-  ros_autoruner_lib # Add library line
 )

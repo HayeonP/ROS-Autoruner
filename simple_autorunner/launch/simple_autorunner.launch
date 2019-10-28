@@ -1,0 +1,4 @@
+<launch>
+    <rosparam command="load" file="/home/hypark/minicar_ws/src/simple_autorunner/cfg/simple_autorunner.yaml" />
+    <node pkg="simple_autorunner" type="simple_autorunner" name="simple_autorunner" output="screen" />
+</launch>

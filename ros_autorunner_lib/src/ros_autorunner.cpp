@@ -1,6 +1,6 @@
-#include <ros_autoruner/ros_autoruner.h>
+#include <ros_autorunner/ros_autorunner.h>
 
-void ROSAutoruner::init(ros::NodeHandle nh, Sub_v sub_v){
+void ROSAutorunner::init(ros::NodeHandle nh, Sub_v sub_v){
     if(signal(SIGINT, sig_handler) == SIG_ERR){
         std::cout<<"\nCannot catch SIGINT\n";
     }
@@ -83,7 +83,7 @@ void ROSAutoruner::init(ros::NodeHandle nh, Sub_v sub_v){
     print_step_info_list();
 }
 
-void ROSAutoruner::Run(){
+void ROSAutorunner::Run(){
     if(current_step_ == step_info_list_.end()){
         return;
     }
@@ -112,7 +112,7 @@ void ROSAutoruner::Run(){
     return;
 }
 
-void ROSAutoruner::run_node(int step_id){
+void ROSAutorunner::run_node(int step_id){
     std::string pkg_name = step_info_list_[step_id].pkg_name;
     std::string node_name = step_info_list_[step_id].target_name;
     std::string run_str = create_run_string(pkg_name, node_name);
@@ -123,7 +123,7 @@ void ROSAutoruner::run_node(int step_id){
     }
 }
 
-void ROSAutoruner::launch_script(int step_id){
+void ROSAutorunner::launch_script(int step_id){
     std::string pkg_name = step_info_list_[step_id].pkg_name;
     std::string node_name = step_info_list_[step_id].target_name;
     std::string launch_str = create_launch_string(pkg_name, node_name); 
@@ -134,15 +134,15 @@ void ROSAutoruner::launch_script(int step_id){
     }
 }
 
-std::string ROSAutoruner::create_run_string(std::string pkg_name, std::string node_name){
+std::string ROSAutorunner::create_run_string(std::string pkg_name, std::string node_name){
     return "rosrun " + pkg_name + " " + node_name;
 }
 
-std::string ROSAutoruner::create_launch_string(std::string pkg_name, std::string launch_name){
+std::string ROSAutorunner::create_launch_string(std::string pkg_name, std::string launch_name){
     return "roslaunch " + pkg_name + " " + launch_name;
 }
 
-void ROSAutoruner::print_step_info_list(){
+void ROSAutorunner::print_step_info_list(){
     ROS_INFO("============================================================");        
     ROS_INFO("      < Step Infos >");
     ROS_INFO(" ");
@@ -162,7 +162,7 @@ void ROSAutoruner::print_step_info_list(){
 void sig_handler(int signo){
     if (signo==SIGINT){
         ROS_WARN("Termiate all");
-        system("/home/hypark/minicar_ws/src/simple_autoruner/script/terminate.sh");
+        system(terminate_script_path_.c_str());
         exit(0);   
     }
 }
